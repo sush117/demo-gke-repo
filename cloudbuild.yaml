@@ -1,0 +1,52 @@
+steps:
+# 0. Authenticate to GKE
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'container'
+    - 'clusters'
+    - 'get-credentials'
+    - 'demo-cluster'
+    - '--zone'
+    - 'us-central1-a'
+
+# 1. Build image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/version-app:$SHORT_SHA', '.']
+
+# 2. Push image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/version-app:$SHORT_SHA']
+
+# 3. Deploy to DEV
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'set'
+    - 'image'
+    - 'deployment/version-app-dev'
+    - 'version-app=gcr.io/$PROJECT_ID/version-app:$SHORT_SHA'
+
+# 4. Wait for DEV rollout
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'rollout'
+    - 'status'
+    - 'deployment/version-app-dev'
+
+# (Manual approval happens via trigger, NOT here)
+
+# 5. Deploy to PROD
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'set'
+    - 'image'
+    - 'deployment/version-app-prod'
+    - 'version-app=gcr.io/$PROJECT_ID/version-app:$SHORT_SHA'
+
+# 6. Wait for PROD rollout
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'rollout'
+    - 'status'
+    - 'deployment/version-app-prod'
+
+timeout: "900s"
