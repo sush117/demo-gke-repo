@@ -8,7 +8,7 @@ serialPipeline:
   stages:
   - targetId: dev
   - targetId: prod
-    requireApproval: True
+    requireApproval: true
 
 ---
 apiVersion: deploy.cloud.google.com/v1
