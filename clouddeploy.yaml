@@ -7,8 +7,17 @@ description: version app pipeline
 serialPipeline:
   stages:
   - targetId: dev
+
   - targetId: prod
-    requireApproval: true
+    strategy:
+      standard:
+        verify: false
+
+    # ✅ THIS is the correct approval config
+    deployParameters: {}
+    profiles: []
+    approvalConfigs:
+    - approvalRequired: true
 
 ---
 apiVersion: deploy.cloud.google.com/v1
