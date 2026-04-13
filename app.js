@@ -4,8 +4,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configurable values (important for CI/CD later)
-const VERSION = process.env.VERSION || "Hello from THE COOK 🚀";
-const MESSAGE = process.env.MESSAGE || "Yo, yo, yo, 148, 3 to the 3 to the 6 to the 9, representin’ the ABQ. What up, biatch? Leave it at the tone!";
+const VERSION = process.env.VERSION || "SAY MY NAME 🚀";
+const MESSAGE = process.env.MESSAGE || "HEISENGBERG 🧪 !!! YOU'RE GODDAMN RIGHT!";
 
 // Root UI
 app.get("/", (req, res) => {
