@@ -7,17 +7,7 @@ description: version app pipeline
 serialPipeline:
   stages:
   - targetId: dev
-
   - targetId: prod
-    strategy:
-      standard:
-        verify: false
-
-    # ✅ THIS is the correct approval config
-    deployParameters: {}
-    profiles: []
-    approvalConfigs:
-    - approvalRequired: true
 
 ---
 apiVersion: deploy.cloud.google.com/v1
@@ -34,5 +24,8 @@ kind: Target
 metadata:
   name: prod
 description: prod environment
+
+requireApproval: true   # ✅ ONLY VALID PLACE
+
 gke:
   cluster: projects/project-f0e767ca-e0c1-4dd7-af0/locations/us-central1-a/clusters/demo-cluster
