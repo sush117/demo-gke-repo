@@ -12,9 +12,8 @@ spec:
       labels:
         app: version-app
     spec:
-      containers:
-      - name: version-app
-        image: gcr.io/project-f0e767ca-e0c1-4dd7-af0/version-app:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3000
+  containers:
+  - name: version-app
+    image: version-app   # ✅ THIS IS THE KEY
+    ports:
+      - containerPort: 3000
