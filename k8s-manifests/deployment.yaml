@@ -12,8 +12,8 @@ spec:
       labels:
         app: version-app
     spec:
-  containers:
-  - name: version-app
-    image: version-app   # ✅ THIS IS THE KEY
-    ports:
-      - containerPort: 3000
+        containers:
+        - name: version-app
+          image: version-app   # ✅ THIS IS THE KEY
+          ports:
+            - containerPort: 3000
