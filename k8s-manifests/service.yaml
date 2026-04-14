@@ -6,6 +6,7 @@ spec:
   type: LoadBalancer
   selector:
     app: version-app
+    env: main
   ports:
     - port: 80
       targetPort: 3000
