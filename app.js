@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configurable values
-const VERSION = process.env.VERSION || "I am not in danger, Skyler. I am the danger!";
+const VERSION = process.env.VERSION || "Hey Yo Mr. White!";
 const MESSAGE = process.env.MESSAGE || "Say my name.";
 
 // Serve static files if needed later
