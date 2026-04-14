@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: version-app
-        image: gcr.io/YOUR_PROJECT_ID/version-app:latest
+        image: gcr.io/project-f0e767ca-e0c1-4dd7-af0/version-app:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
